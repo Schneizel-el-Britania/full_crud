@@ -4,7 +4,7 @@ module.exports.addTask = async (req, res, next) => {
   try {
     const { body } = req;
     const task = await Task.create(body);
-    res.status(201).send({ data: task });
+    res.status(201).send({ data: [task] });
   } catch (error) {
     next(error);
   }
