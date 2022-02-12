@@ -1,0 +1,12 @@
+.container {
+  display: table;
+  & > * {
+    display: table-cell;
+    width: 15vw;
+  }
+}
+
+.isDoneButton {
+  width: 30px;
+  height: 30px;
+}
