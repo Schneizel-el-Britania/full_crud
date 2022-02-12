@@ -11,10 +11,13 @@
   "license": "ISC",
   "devDependencies": {
     "cors": "^2.8.5",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
     "express": "^4.17.2",
+    "http-errors": "^2.0.0",
+    "pg": "^8.7.3",
     "sequelize": "^6.16.1"
   }
 }
