@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as TaskActionCreators from "../../../actions/taskCreators";
 import Input from "../../Form/Input";
+import {TASK_SCHEMA} from '../../../utils/validationSchema'
 
 const initialValues = {
   author: "",
@@ -19,7 +20,7 @@ export default function AddTask() {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={TASK_SCHEMA}>
       <Form>
         <Input key="author" name="author" />
         <Input key="body" name="body" />
