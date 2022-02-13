@@ -22,6 +22,7 @@ const handlers = {
 
   [ACTION_TYPES.ADD_TASK_REQUEST]: handleRequest,
   [ACTION_TYPES.GET_TASKS_REQUEST]: handleRequest,
+  [ACTION_TYPES.SET_TASK_DONE_REQUEST]: handleRequest,
   [ACTION_TYPES.ADD_TASK_SUCCESS]: produce((draftState, action) => {
     const { payload: { task } } = action;
     draftState.isFetching = false;
@@ -32,8 +33,16 @@ const handlers = {
     draftState.isFetching = false;
     draftState.tasks.push(...tasks);
   }),
+  [ACTION_TYPES.SET_TASK_DONE_SUCCESS]: produce((draftState, action) => {
+    const { payload: { task } } = action;
+    const { tasks } = draftState;
+    draftState.isFetching = false;
+    const index = tasks.map((task) => task.id).indexOf(task.id);
+    tasks.splice(index, 1, task);
+  }),
   [ACTION_TYPES.ADD_TASK_ERROR]: handleError,
   [ACTION_TYPES.GET_TASKS_ERROR]: handleError,
+  [ACTION_TYPES.SET_TASK_DONE_ERROR]: handleError,
 }
 
 export default function taskReducer(state = initialState, action) {

@@ -11,9 +11,9 @@ export function* addTaskSaga(action) {
   }
 }
 
-export function* getTasksSaga(action) {
+export function* getTasksSaga() {
   try {
-    const { data: { data: tasks } } = yield API.getTasks(action.payload);
+    const { data: { data: tasks } } = yield API.getTasks();
     yield put(TaskActionCreators.getTasksSuccess({ tasks }));
   } catch (error) {
     yield put(TaskActionCreators.getTasksError({ error }));
@@ -22,7 +22,7 @@ export function* getTasksSaga(action) {
 
 export function* setTaskDoneSaga(action) {
   try {
-    const { data: { data: [task] } } = yield API.setTaskDone(action.payload.values);
+    const { data: { data: [task] } } = yield API.setTaskDone(action.payload.id);
     yield put(TaskActionCreators.setTaskDoneSuccess({ task }));
   } catch (error) {
     yield put(TaskActionCreators.setTaskDoneError({ error }));

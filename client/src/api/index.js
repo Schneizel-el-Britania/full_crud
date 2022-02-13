@@ -6,4 +6,4 @@ const httpClient = axios.create({
 
 export const addTask = (data) => httpClient.post('/tasks', data);
 export const getTasks = () => httpClient.get('/tasks');
-export const setTaskDone = (id) => httpClient.patch('/tasks', id);
+export const setTaskDone = (id) => httpClient.patch(`/tasks/${id}`);

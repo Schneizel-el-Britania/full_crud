@@ -1,14 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as TaskActionCreators from "../../../actions/taskCreators";
 import styles from "./Task.module.scss";
 
 export default function Task(props) {
-  const { author, body, isDone } = props.task;
+  const { id, author, body, isDone } = props.task;
+
+  const { setTaskDoneRequest } = bindActionCreators(TaskActionCreators, useDispatch());
+  const handleIsDone = () => setTaskDoneRequest({ id });
+
   return (
     <article className={styles.container}>
+      <p>{id}</p>
       <p>{author}</p>
       <p>{body}</p>
       <p>{isDone ? "done" : "in progress"}</p>
-      <button className={styles.isDoneButton}>{isDone ? "✘" : "✓"}</button>
+      <button onClick={handleIsDone} className={styles.isDoneButton}>
+        {isDone ? "✘" : "✓"}
+      </button>
     </article>
   );
 }

@@ -29,9 +29,9 @@ export const getTasksError = ({ error }) => ({
   payload: { error }
 });
 
-export const setTaskDoneRequest = ({ values }) => ({
+export const setTaskDoneRequest = ({ id }) => ({
   type: ACTION_TYPES.SET_TASK_DONE_REQUEST,
-  payload: { values }
+  payload: { id }
 });
 export const setTaskDoneSuccess = ({ task }) => ({
   type: ACTION_TYPES.SET_TASK_DONE_SUCCESS,
