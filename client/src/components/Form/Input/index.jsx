@@ -1,6 +1,6 @@
-import React from "react";
-import { ErrorMessage, Field } from "formik";
-import styles from "./Input.module.scss";
+import React from 'react';
+import { ErrorMessage, Field } from 'formik';
+import styles from './Input.module.scss';
 
 export default function Input(props) {
   const { name } = props;

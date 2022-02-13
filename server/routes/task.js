@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const TaskController = require('../controllers/task.controller');
 
 const taskRouter = Router();

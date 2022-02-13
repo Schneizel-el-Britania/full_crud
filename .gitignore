@@ -26,4 +26,5 @@
 
 .*
 !.gitignore
+!.prettierrc.json
 /server/requests/

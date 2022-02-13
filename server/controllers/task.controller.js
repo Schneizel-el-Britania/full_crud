@@ -12,7 +12,7 @@ module.exports.addTask = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 module.exports.getTasks = async (req, res, next) => {
   try {
@@ -21,20 +21,25 @@ module.exports.getTasks = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 module.exports.setIsDone = async (req, res, next) => {
   try {
-    const { params: { taskId } } = req;
+    const {
+      params: { taskId },
+    } = req;
     const taskInstance = await Task.findByPk(taskId);
-    const updatedTask = await taskInstance.update({
-      isDone: !taskInstance.isDone
-    }, {
-      where: { id: taskId },
-      returning: true,
-    });
+    const updatedTask = await taskInstance.update(
+      {
+        isDone: !taskInstance.isDone,
+      },
+      {
+        where: { id: taskId },
+        returning: true,
+      }
+    );
     res.status(200).send({ data: [updatedTask] });
   } catch (error) {
     next(error);
   }
-}
+};
