@@ -1,8 +1,12 @@
+const createError = require('http-errors');
 const { Task } = require('../models');
 
 module.exports.addTask = async (req, res, next) => {
   try {
     const { body } = req;
+    if (!body.author || !body.body) {
+      return next(createError(400, 'Task should not be empty!'));
+    }
     const task = await Task.create(body);
     res.status(201).send({ data: [task] });
   } catch (error) {

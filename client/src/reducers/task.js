@@ -3,21 +3,21 @@ import ACTION_TYPES from "../actions/actionTypes";
 const initialState = {
   tasks: [],
   isFetching: false,
-  error: null
+  errors: null
 }
 
 const handleRequest = produce((draftState, action) => {
   draftState.isFetching = true;
 })
 const handleError = produce((draftState, action) => {
-  const { payload: { error } } = action;
-  draftState.error = error;
+  const { payload: { error: { response: { data: { errors } } } } } = action;
+  draftState.errors = errors;
   draftState.isFetching = false;
 })
 
 const handlers = {
   [ACTION_TYPES.CLEAR_ERROR]: produce((draftState, action) => {
-    draftState.error = null;
+    draftState.errors = null;
   }),
 
   [ACTION_TYPES.ADD_TASK_REQUEST]: handleRequest,

@@ -8,22 +8,28 @@ module.exports = (sequelize, DataTypes) => {
     author: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
     body: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
     isDone: {
       field: 'is_done',
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue:false,
+      defaultValue: false,
     }
   }, {
     sequelize,
     modelName: 'Task',
     tableName: 'tasks',
-    underscored:true
+    underscored: true
   });
   return Task;
 };

@@ -11,9 +11,10 @@ const initialValues = {
 };
 
 export default function AddTask() {
-  const { addTaskRequest } = bindActionCreators(TaskActionCreators, useDispatch());
+  const { addTaskRequest, clearError } = bindActionCreators(TaskActionCreators, useDispatch());
   const onSubmit = (values, formikBag) => {
     addTaskRequest({ values });
+    clearError();
     formikBag.resetForm();
   };
 
