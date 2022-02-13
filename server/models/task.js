@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        is: /^[A-Z][a-z-]{3,15}$/
       },
     },
     body: {
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        is: /[a-z0-9-_ ]{3,25}$/i
       },
     },
     isDone: {
